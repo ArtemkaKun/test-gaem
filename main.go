@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 	router.Static("/StaticData", "./TgBuild/StaticData")
 	router.LoadHTMLGlob("./TgBuild/index.html")
 	router.GET("/", loadMainPage)
-	log.Panic(router.Run(":3301"))
+	log.Panic(router.Run(os.Getenv("PORT")))
 }
 
 func loadMainPage(context *gin.Context) {
