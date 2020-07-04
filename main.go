@@ -15,7 +15,7 @@ func main() {
 	router.Static("/StaticData", "./TgBuild/StaticData")
 	router.LoadHTMLGlob("./TgBuild/index.html")
 	router.GET("/", loadMainPage)
-	log.Panic(router.Run(fmt.Sprintf("%v", os.Getenv("PORT"))))
+	log.Panic(router.Run(fmt.Sprintf(":%v", os.Getenv("PORT"))))
 }
 
 func loadMainPage(context *gin.Context) {
